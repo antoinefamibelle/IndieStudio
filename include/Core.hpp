@@ -22,14 +22,14 @@ namespace Indie {
             ~Core();
 
             void printMapInfo();
-            void setMap(std::vector<std::pair<Indie::Entity *,int>> tmp) {this->_map = tmp; };
+            void setMap(std::vector<std::pair<Indie::Entity *,int> > tmp) {this->_map = tmp; };
         protected:
             int _maxX; // Taille max de la map en largeur
             int _maxY; // Taille max de la map en longueur
             int _numberOfPlayer;
             int _score;
-            std::vector<std::shared_ptr<Indie::Entity>> _players;
-            std::vector<std::pair<Indie::Entity *,int>> _map;
+            std::vector<std::shared_ptr<Indie::Entity> > _players;
+            std::vector<std::pair<Indie::Entity *,int> > _map;
         private:
     };
 }

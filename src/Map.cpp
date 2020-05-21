@@ -44,7 +44,7 @@ std::vector<std::string> Indie::Map::openFile()
     return map;
 }
 
-std::vector<std::pair<Indie::Entity *,int>> Indie::Map::GenerateMap()
+std::vector<std::pair<Indie::Entity *,int> > Indie::Map::GenerateMap()
 {
     std::vector<std::string> firstMap = this->openFile();
     int y = 0;

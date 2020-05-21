@@ -1,0 +1,7 @@
+/Users/antoinefamibelle/Desktop/IndieStudio/build/CMakeFiles/install/local.dir
+/Users/antoinefamibelle/Desktop/IndieStudio/build/CMakeFiles/rebuild_cache.dir
+/Users/antoinefamibelle/Desktop/IndieStudio/build/CMakeFiles/edit_cache.dir
+/Users/antoinefamibelle/Desktop/IndieStudio/build/CMakeFiles/install/strip.dir
+/Users/antoinefamibelle/Desktop/IndieStudio/build/CMakeFiles/install.dir
+/Users/antoinefamibelle/Desktop/IndieStudio/build/CMakeFiles/list_install_components.dir
+/Users/antoinefamibelle/Desktop/IndieStudio/build/CMakeFiles/indie_studio.dir
