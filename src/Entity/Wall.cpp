@@ -7,16 +7,14 @@
 
 #include "Wall.hpp"
 
-Indie::Wall::Wall(int x, int y, int id, Indie::EntityType type)
+ECS::Wall::Wall(int x, int y, int id, ECS::ObjectType type)
 {
-    this->_life = 50;
-    this->_posY = y;
-    this->_posX = x;
-    this->_bomb = false;
-    this->_id = id;
-    this->_type = type;
+    this->setId(id);
+    this->setPosY(y);
+    this->setPoxX(x);
+    this->setType(type);
 }
 
-Indie::Wall::~Wall()
+ECS::Wall::~Wall()
 {
 }

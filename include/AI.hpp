@@ -2,19 +2,19 @@
 ** EPITECH PROJECT, 2020
 ** IndieStudio
 ** File description:
-** Floor
+** AI
 */
 
 #pragma once
 
-#include "Static.hpp"
-#include "Object.hpp"
+#include "Movable.hpp"
 
 namespace ECS {
-    class Floor : public ECS::Static {
+    class AI : public ECS::Movable {
         public:
-            Floor(int, int, int);
-            ~Floor();
+            AI();
+            ~AI();
+
         protected:
         private:
     };

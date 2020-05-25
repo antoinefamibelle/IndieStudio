@@ -7,11 +7,12 @@
 
 #pragma once
 
-#include "Entity.hpp"
 #include "Chrono.hpp"
+#include "Controlable.hpp"
 
-namespace Indie {
-    class Character : public Indie::Entity {
+
+namespace ECS {
+    class Character : public ECS::Controlable {
         public:
             Character(int, int, int);
             ~Character();
@@ -21,7 +22,7 @@ namespace Indie {
         protected:
             bool _bombReady;
             Chrono _chrono;
-
+            int _isAlive;
         private:
     };
 }

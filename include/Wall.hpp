@@ -7,17 +7,18 @@
 
 #pragma once
 
-#include "Entity.hpp"
+#include "Static.hpp"
+#include "Object.hpp"
 
-namespace Indie {
-    class Wall : public Indie::Entity {
+namespace ECS {
+    class Wall : public ECS::Static {
         public:
-            Wall(int, int, int, Indie::EntityType);
+            Wall(int, int, int, ECS::ObjectType);
             ~Wall();
 
-            bool isFree() { return !this->_bomb; } ;
+            bool isAlive() { return !this->_isAlive; };
         protected:
-            bool _bomb;
+            bool _isAlive;
         private:
     };
 }

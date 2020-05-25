@@ -1,3 +1,0 @@
-/home/antoinefamibelle/CMake/CMakeFiles/rebuild_cache.dir
-/home/antoinefamibelle/CMake/CMakeFiles/IndieStudio.dir
-/home/antoinefamibelle/CMake/CMakeFiles/edit_cache.dir

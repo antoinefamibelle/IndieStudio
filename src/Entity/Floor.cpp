@@ -7,15 +7,16 @@
 
 #include "Floor.hpp"
 
-Indie::Floor::Floor(int x, int y, int id)
+ECS::Floor::Floor(int x, int y, int id)
 {
-    this->_posX = x;
-    this->_posY = y;
-    this->_id = id;
-    this->_type = Indie::FloorType;
+    this->setPoxX(x);
+    this->setPosY(y);
+    this->setId(id);
+    this->setType(ECS::ObjectType::FloorType);
+    this->setEmpty(true);
 }
 
-Indie::Floor::~Floor()
+ECS::Floor::~Floor()
 {
 }
 
