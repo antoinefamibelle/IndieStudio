@@ -5,10 +5,9 @@ build:
 
   script:
     - g++ test.cpp -o mybinary 
-    - "false"
-  #artifacts:
-    #paths:
-     # - mybinary
+  artifacts:
+    paths:
+      - mybinary
 
 
 #test:
