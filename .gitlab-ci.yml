@@ -1,0 +1,11 @@
+image: gcc
+
+build:
+  stage: build
+  script: g++ test.cpp -o test-ci
+
+
+test:
+  stage: test
+  script:
+    - make
