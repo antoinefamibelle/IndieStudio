@@ -20,8 +20,8 @@ namespace ECS {
 
     class Object {
         public:
-            Object();
-            ~Object();
+            Object() {};
+            ~Object() {};
 
             virtual void init();
             virtual void update();

@@ -14,6 +14,9 @@ CPPFLAGS	=	-I./include/
 CXXFLAGS	=	-Wall -Wextra
 
 SRC	=	./src/main.cpp \
+		./src/Parser/JsonParser.cpp	\
+		./src/Parser/Serializer.cpp	\
+		./src/Parser/Deserializer.cpp	\
 
 
 OBJ	=	$(SRC:.cpp=.o)
