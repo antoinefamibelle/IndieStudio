@@ -34,7 +34,7 @@ namespace ECS {
             int _range; //taille de l'explosion
             Chrono _chrono;
             bool _busy;
-            boost::thread_group _thread;
+         //   boost::thread_group _thread;
         private:
     };
 }
