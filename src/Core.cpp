@@ -21,7 +21,15 @@ Indie::Core::~Core()
 
 void Indie::Core::printMapInfo()
 {
-    for (auto &i : this->_map) {
+    /*for (auto &i : this->_map) {
         i.first->getInfo();
+    }*/
+}
+
+void Indie::Core::run()
+{
+    for (int i = 0; i != 10; i ++) {
+        std::shared_ptr<ECS::Object> tmp;
+        this->_map.push_back(make_pair(tmp,i));
     }
 }

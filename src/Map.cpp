@@ -15,7 +15,7 @@ Indie::Map::~Map()
 {
 }
 
-
+/*
 void Indie::Map::printMapInfo()
 {
     for (auto &i : this->_map) {
@@ -70,3 +70,4 @@ std::vector<std::pair<Indie::Entity *,int> > Indie::Map::GenerateMap()
     }
     return this->_map;
 }
+*/

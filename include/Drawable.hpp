@@ -12,11 +12,9 @@
 namespace ECS {
     class Drawable : public ECS::Object{
         public:
-            Drawable();
-            ~Drawable();
+            Drawable(){};
+            ~Drawable(){};
 
-            void init() override;
-            void update() override;
             void draw() {};
         protected:
             // voir ce dont on a besoin pour draw un object

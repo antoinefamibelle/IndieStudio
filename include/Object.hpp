@@ -7,8 +7,12 @@
 
 #pragma once
 
-namespace ECS {
+#include "iostream"
+#include "memory"
+#include "vector"
+#include "string"
 
+namespace ECS {
     enum ObjectType {
         CharacterType,
         BombType,
@@ -20,11 +24,8 @@ namespace ECS {
 
     class Object {
         public:
-            Object();
-            ~Object();
-
-            virtual void init();
-            virtual void update();
+            Object(){};
+            ~Object(){};
 
             bool isEmpty() {return this->_isEmpty; };
             int getId() {return this->_id;};

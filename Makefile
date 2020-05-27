@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-NAME	=	indie	
+NAME	=	IndieStudio	
 
 CC	=	g++
 
@@ -14,6 +14,15 @@ CPPFLAGS	=	-I./include/
 CXXFLAGS	=	-Wall -Wextra
 
 SRC	=	./src/main.cpp \
+		./src/Bomb.cpp \
+		./src/Chrono.cpp \
+		./src/Core.cpp \
+		./src/Map.cpp \
+		./src/Entity/Character.cpp \
+		./src/Entity/Floor.cpp \
+		./src/Entity/Wall.cpp \
+		./src/ECS/Movable.cpp \
+		
 
 
 OBJ	=	$(SRC:.cpp=.o)
@@ -21,7 +30,7 @@ OBJ	=	$(SRC:.cpp=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	$(CC) -o $(NAME)  $(OBJ)
+	$(CC) -o $(NAME)  $(OBJ) -lpthread
 
 clean:
 	@rm -f $(OBJ)

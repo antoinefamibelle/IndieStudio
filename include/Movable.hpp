@@ -15,9 +15,6 @@ namespace ECS {
             Movable();
             ~Movable();
 
-            void init() override;
-            void update() override;
-
             void moveUp();
             void moveDown();
             void moveLeft();

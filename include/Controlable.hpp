@@ -19,8 +19,8 @@ namespace ECS {
     };
     class Controlable : public ECS::Movable {
         public:
-            Controlable();
-            ~Controlable();
+            Controlable(){};
+            ~Controlable(){};
 
         protected:
             ECS::InputType _input;

@@ -22,6 +22,7 @@ namespace Indie {
             Core(int);
             ~Core();
 
+            void run();
             void printMapInfo();
             void setMap(std::vector<std::pair<std::shared_ptr<ECS::Object>,int>> tmp) {this->_map = tmp; };
         protected:

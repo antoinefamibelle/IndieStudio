@@ -15,11 +15,9 @@
 int main()
 {
     Indie::Core *core = new Indie::Core(4);
-    Indie::Map *map = new Indie::Map();
 
     try {
-        core->setMap(map->GenerateMap());
-        core->printMapInfo();
+        core->run();
     } catch(char *message) {
         std::cout << message << std::endl;
     }
