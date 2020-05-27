@@ -12,8 +12,8 @@
 namespace ECS {
     class Static : ECS::Drawable{
         public:
-            Static();
-            ~Static();
+            Static(){};
+            ~Static(){};
 
             
         protected:

@@ -4,7 +4,7 @@ build:
   stage: build
 
   script:
-    - g++ test.cpp -o mybinary 
+    - make
   artifacts:
     paths:
       - mybinary

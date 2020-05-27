@@ -9,11 +9,9 @@
 #define SERIALIZER_HPP_
 
 #include "Object.hpp"
-#include <vector>
-#include <iostream>
-#include <fstream>
+#include "FileManagement.hpp"
 
-class Serializer {
+class Serializer : public FileManagement {
     public:
         Serializer();
         ~Serializer();
@@ -24,12 +22,6 @@ class Serializer {
         std::string toJson(std::string name, std::string value) const;
         void setupJsonFile();
         void closeJsonFile();
-
-        void openFile(std::string file);
-        void writeInFile(std::string text);
-        void closeFile();
-
-        std::ofstream _file;
 };
 
 #endif /* !SERIALIZER_HPP_ */

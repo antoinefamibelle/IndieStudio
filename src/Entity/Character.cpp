@@ -6,16 +6,17 @@
 */
 
 #include "Character.hpp"
+#include "Object.hpp"
 
-Indie::Character::Character(int x, int y, int id)
+ECS::Character::Character(int x, int y, int id)
 {
-    this->_posX = x;
-    this->_posY = y;
-    this->_id = id;
-    this->_type = Indie::CharacterType;
+    this->setPoxX(x);
+    this->setPosY(y);
+    this->setId(id);
+    this->setType(ECS::CharacterType);
 }
 
-Indie::Character::~Character()
+ECS::Character::~Character()
 {
     
 }

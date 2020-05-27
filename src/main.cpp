@@ -31,11 +31,18 @@
 
 int main()
 {
-    ECS::Object *_object = new ECS::Object();
-    std::vector<ECS::Object *> object;
-    JsonParser *_parser = new JsonParser();
+    // std::vector<ECS::Object *> object;
+    // JsonParser *_parser = new JsonParser();
 
-    object.push_back(_object);
-    _parser->serializer->serialize(object);
+    // _parser->serializer->serialize(object);
+    //  object = _parser->deserializer->deserialize("./conf/data.conf");
+
+    // Indie::Core *core = new Indie::Core(4);
+
+    // try {
+    //     core->run();
+    // } catch(char *message) {
+    //     std::cout << message << std::endl;
+    // }
     return 0;
 }

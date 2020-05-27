@@ -49,5 +49,5 @@ bool ECS::Bomb::pose(std::vector<std::shared_ptr<ECS::Object>> map, int x, int y
 
 void ECS::Bomb::lauchBomb()
 {
-    this->_thread.create_thread(boost::bind())
+    //this->_thread.create_thread(boost::bind())
 }
