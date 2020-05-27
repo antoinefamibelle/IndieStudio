@@ -22,10 +22,12 @@ SRC	=	./src/main.cpp \
 		./src/Chrono.cpp \
 		./src/Core.cpp \
 		./src/Map.cpp \
-		./src/Entity/Character.cpp \
-		./src/Entity/Floor.cpp \
-		./src/Entity/Wall.cpp \
+		./src/Object/Character.cpp \
+		./src/Object/Floor.cpp \
+		./src/Object/Wall.cpp \
+		./src/Entity/StaticEntity.cpp \
 		./src/ECS/Movable.cpp \
+		./src/ECS/Drawable.cpp \
 		
 
 

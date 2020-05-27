@@ -17,6 +17,7 @@ namespace ECS {
 
             
         protected:
+            using ECS::Drawable::setSprite;
             using ECS::Object::getId;
             using ECS::Object::getPosX;
             using ECS::Object::getPosY;

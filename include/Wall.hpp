@@ -7,11 +7,11 @@
 
 #pragma once
 
-#include "Static.hpp"
+#include "StaticEntity.hpp"
 #include "Object.hpp"
 
 namespace ECS {
-    class Wall : public ECS::Static {
+    class Wall : public ECS::StaticEntity {
         public:
             Wall(int, int, int, ECS::ObjectType);
             ~Wall();
