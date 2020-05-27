@@ -11,7 +11,6 @@
 #include "Static.hpp"
 #include "vector"
 #include "memory"
-#include "boost/thread.hpp"
 
 namespace ECS {
     class Bomb : public ECS::Static {
