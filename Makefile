@@ -11,7 +11,7 @@ CC	=	g++
 
 CPPFLAGS	=	-I./include/
 
-CXXFLAGS	=	-Wall -Wextra
+CXXFLAGS	=	-Wall -Wextra -std=c++17
 
 SRC	=	./src/main.cpp \
 		./src/Parser/JsonParser.cpp	\
