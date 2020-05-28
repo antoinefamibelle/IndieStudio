@@ -4,6 +4,10 @@ build:
   stage: build
 
   script:
+    - ./clean_cmake.sh
+    - cd build
+    - cmake ..
+    - cd ..
     - make
   artifacts:
     paths:
