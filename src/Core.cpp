@@ -29,7 +29,7 @@ void Indie::Core::printMapInfo()
 void Indie::Core::run()
 {
     for (int i = 0; i != 10; i ++) {
-        std::shared_ptr<ECS::Object> tmp;
+        std::shared_ptr<ECS::StaticEntity> tmp;
         this->_map.push_back(make_pair(tmp,i));
     }
 }

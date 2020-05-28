@@ -7,11 +7,13 @@
 
 #pragma once
 
-class MovableEntity {
-    public:
-        MovableEntity();
-        ~MovableEntity();
+namespace ECS {
+    class MovableEntity {
+        public:
+            MovableEntity();
+            ~MovableEntity();
 
-    protected:
-    private:
-};
+        protected:
+        private:
+    };
+}
