@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "Movable.hpp"
+#include "MovableEntity.hpp"
 
 namespace ECS {
     enum InputType {
@@ -17,13 +17,27 @@ namespace ECS {
         DownInput,
         NoInput
     };
-    class Controlable : public ECS::Movable {
+    class Controlable : public ECS::MovableEntity {
         public:
             Controlable(){};
             ~Controlable(){};
 
+            using ECS::Drawable::setSprite;
+            using ECS::Object::getId;
+            using ECS::Object::getPosX;
+            using ECS::Object::getPosY;
+            using ECS::Object::getType;
+            using ECS::Object::setId;
+            using ECS::Object::setPosY;
+            using ECS::Object::setPosX;
+
+            // Utile ???
+            using ECS::Object::setType;
+            using ECS::Object::isEmpty;
+            using ECS::Object::setEmpty;
         protected:
             ECS::InputType _input;
+           
         private:
     };
 }

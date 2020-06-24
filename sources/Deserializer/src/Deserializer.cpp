@@ -47,7 +47,7 @@ void Deserializer::addToClass(std::string line)
     if (first == "_id")
         this->_tmp->setId(std::stoi(second));
     if (first == "_x")
-        this->_tmp->setPoxX(std::stoi(second));
+        this->_tmp->setPosX(std::stoi(second));
     if (first == "_y")
         this->_tmp->setPosY(std::stoi(second));
     if (first == "_isEmpty")

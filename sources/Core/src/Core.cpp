@@ -9,10 +9,12 @@
 #include "Wall.hpp"
 #include "Floor.hpp"
 
-Indie::Core::Core(int nb)
+Indie::Core::Core(int nbPlayers)
 {
     this->_score = 0;
-    this->_numberOfPlayer = nb;
+    this->_numberOfPlayer = nbPlayers;
+    // 25 A MOVE 
+    this->mapGenerator.genMap(nbPlayers, 25);
 }
 
 Indie::Core::~Core()

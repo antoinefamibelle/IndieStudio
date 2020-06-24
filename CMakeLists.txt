@@ -1,70 +1,148 @@
-cmake_policy(VERSION 3.11)
-cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
-project("Indie Studio - EPITECH Year End Project" VERSION 1.0.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.0)
 
-macro(SetGlobalCXXProperty)
-    enable_language(CXX)
-    if (UNIX OR APPLE)
-        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
-    endif(UNIX OR APPLE)
-    set(CMAKE_CXX_STANDARD_REQUIRED ON)
-    set(CMAKE_CXX_EXTENSIONS OFF)
-endmacro()
+project(indie_studio)
 
-function(SetCustomMakefileRules)
-    add_custom_target(re COMMAND make clean COMMAND make WORKING_DIRECTORY ${CMAKE_CURRENT_BIN_DIR})
-    add_custom_target(fclean COMMAND make clean WORKING_DIRECTORY ${CMAKE_CURRENT_BIN_DIR})
-endfunction()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -g3 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio")
 
-macro(SetPathToModule)
-    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake/modules")
-    set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-endmacro()
+include_directories(./libraries/irrklang/includes
+		    ./libraries/irrlicht/includes
+		    ./sources/AI/include
+            ./sources/Bomb/include
+            ./sources/Game/include
+            ./sources/Character/include
+            ./sources/Chrono/include
+            ./sources/Core/include
+            ./sources/Deserializer/include
+            ./sources/Drawable/include
+            ./sources/Explosion/include
+            ./sources/FileManagement/include
+            ./sources/Floor/include
+            ./sources/ManageMenu/include
+            ./sources/JsonParser/include
+            ./sources/Map/include
+            ./sources/MapGenerator/include
+            ./sources/Menu/Button/include
+            ./sources/Menu/Menu/include
+            ./sources/Movable/include
+            ./sources/MovableEntity/include
+            ./sources/MyIrrlicht/include
+            ./sources/Serializer/include
+            ./sources/StaticEntity/include
+            ./sources/Sound/include
+            ./sources/Wall/include
+            ./sources/TMap/include
+		    )
 
-macro(InitCmakeColors)
-    include(OutputColor)
-endmacro()
+if(UNIX)
 
-function(PrintBasicCmakeInfos)
-    message("${Magenta}-> \"${CMAKE_PROJECT_NAME}\" <- ${ColourReset}")
-    message("${Magenta}-- La version minimale de CMake demandée est: ${CMAKE_VERSION} ${ColourReset}")
-    message("${Magenta}-- La génération se fait actuellement pour ${CMAKE_GENERATOR} ${ColourReset}")
-endfunction()
+set(CMAKE_SKIP_BUILD_RPATH_FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH "$ENV{HOME}/indie_studio")
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/release")
 
-macro(GetOpenGL)
-    set(OpenGL_GL_PREFERENCE GLVND)
-    find_package(OpenGL QUIET)
-endmacro()
+set(IRRKLANG_LIBRARY libIrrklang.so)
 
-macro(GetBoost)
-#    if (NOT UNIX OR APPLE)
-#        add_definitions( -DBOOST_ALL_DYN_LINK )
-#    endif (NOT UNIX OR APPLE)
-    set(Boost_USE_STATIC_LIBS OFF) 
-    set(Boost_USE_MULTITHREADED ON)  
-    set(Boost_USE_STATIC_RUNTIME OFF)
-    find_package(Boost 1.69.0 COMPONENTS "thread" "filesystem" "program_options" "regex" "timer" "chrono")
-    if (Boost_INCLUDE_DIR)
-        message("${Cyan}-- Boost includes founded:")
-        message("->  ${Boost_INCLUDE_DIR}")
-    else (Boost_INCLUDE_DIR)
-        message("${Red}-- Boost includes not founded !")
-    endif (Boost_INCLUDE_DIR)
-    if (Boost_LIBRARIES)
-        message("${Cyan}-- Boost lib(s) founded:")
-        foreach(ELEM ${Boost_LIBRARIES})
-            message("->  ${ELEM}")
-        endforeach(ELEM ${Boost_LIBRARIES})
-    else (Boost_LIBRARIES)
-        message("${Red}-- Boost lib(s) not founded !")
-    endif (Boost_LIBRARIES)
-endmacro()
+link_directories(./libraries/irrklang/linux)
 
-SetGlobalCXXProperty()
-SetCustomMakefileRules()
-SetPathToModule()
-InitCmakeColors()
-PrintBasicCmakeInfos()
-GetOpenGL()
-GetBoost()
-add_subdirectory(sources)
+set(IRRLICHT_LIBRARY
+    -L./libraries/irrlicht/linux
+    -lIrrlicht
+    -lGL
+    -lGLU
+    -lXext
+    -lX11
+    -lXxf86vm
+    )
+
+add_executable(indie_studio
+
+            sources/AI/src/AI.cpp
+            sources/Bomb/src/Bomb.cpp
+            sources/Game/src/Game.cpp
+            sources/Character/src/Character.cpp
+            sources/Chrono/src/Chrono.cpp
+            sources/Core/src/Core.cpp
+            sources/Deserializer/src/Deserializer.cpp
+            sources/Drawable/src/Drawable.cpp
+            sources/Explosion/src/Explosion.cpp
+            sources/FileManagement/src/FileManagement.cpp
+            sources/Floor/src/Floor.cpp
+            sources/ManageMenu/src/ManageMenu.cpp
+            sources/JsonParser/src/JsonParser.cpp
+            sources/Map/src/Map.cpp
+            sources/MapGenerator/src/MapGenerator.cpp
+            sources/Menu/Button/source/Button.cpp
+            sources/Menu/Menu/source/Menu.cpp
+            sources/Movable/src/Movable.cpp
+            sources/MovableEntity/src/MovableEntity.cpp
+            sources/MyIrrlicht/src/MyIrrlicht.cpp
+            sources/Serializer/src/Serializer.cpp
+            sources/StaticEntity/src/StaticEntity.cpp
+            sources/Sound/src/Sound.cpp
+            sources/Wall/src/Wall.cpp
+            sources/TMap/src/TMap.cpp
+            sources/main.cpp
+
+	       )
+
+target_link_libraries(indie_studio
+		      ${IRRKLANG_LIBRARY}
+		      ${IRRLICHT_LIBRARY}
+		      )
+
+install(TARGETS indie_studio DESTINATION "$ENV{HOME}/indie_studio")
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/release/ikpFlac.so"
+        DESTINATION "$ENV{HOME}/indie_studio")
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/release/ikpMP3.so"
+        DESTINATION "$ENV{HOME}/indie_studio")
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/release/media"
+        DESTINATION "$ENV{HOME}/indie_studio")
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/libraries/irrklang/linux/libIrrklang.so" DESTINATION "$ENV{HOME}/indie_studio")
+
+elseif(WIN32)
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/release")
+
+add_library(Irrklang STATIC IMPORTED)
+add_library(Irrlicht STATIC IMPORTED)
+
+set_property(TARGET Irrklang PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/libraries/irrklang/windows/libIrrklang.a)
+set_property(TARGET Irrlicht PROPERTY IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/libraries/irrlicht/windows/libIrrlicht.a)
+
+add_executable(indie_studio
+
+            sources/AI/src/AI.cpp
+            sources/Bomb/src/Bomb.cpp
+            sources/Game/src/Game.cpp
+            sources/Character/src/Character.cpp
+            sources/Chrono/src/Chrono.cpp
+            sources/Core/src/Core.cpp
+            sources/Deserializer/src/Deserializer.cpp
+            sources/Drawable/src/Drawable.cpp
+            sources/Explosion/src/Explosion.cpp
+            sources/FileManagement/src/FileManagement.cpp
+            sources/Floor/src/Floor.cpp
+            sources/ManageMenu/src/ManageMenu.cpp
+            sources/JsonParser/src/JsonParser.cpp
+            sources/Map/src/Map.cpp
+            sources/MapGenerator/src/MapGenerator.cpp
+            sources/Menu/Button/source/Button.cpp
+            sources/Menu/Menu/source/Menu.cpp
+            sources/Movable/src/Movable.cpp
+            sources/MovableEntity/src/MovableEntity.cpp
+            sources/MyIrrlicht/src/MyIrrlicht.cpp
+            sources/Serializer/src/Serializer.cpp
+            sources/StaticEntity/src/StaticEntity.cpp
+            sources/Sound/src/Sound.cpp
+            sources/Wall/src/Wall.cpp
+            sources/TMap/src/TMap.cpp
+
+	       )
+
+target_link_libraries(indie_studio
+		      Irrklang
+		      Irrlicht
+		      )
+
+endif(UNIX)

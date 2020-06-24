@@ -7,35 +7,59 @@
 
 #pragma once
 
-#include "Chrono.hpp"
-#include "Static.hpp"
 #include "vector"
 #include "memory"
+#include "Static.hpp"
+#include "Chrono.hpp"
+#include "Explosion.hpp"
+#include <irrlicht.h>
+
+using namespace irr;
+using namespace scene;
+using namespace video;
+using namespace core;
 
 namespace ECS {
     class Bomb : public ECS::Static {
          public:
-            Bomb();
+            Bomb(ISceneManager *, IrrlichtDevice *);
             ~Bomb();
 
-            int getRange() {return this->_range; };
-            int getTime() {return this->_time; };
-            bool isBusy() {return this->_busy; };
+            void updateBomb();
+            int getRange() { return this->_range; };
+            int getTime() { return this->_time; };
+            int getId() { return this->_id; };
+            int getPosX() { return this->_x; };
+            int getPosY() { return this->_y; };
 
+            bool isTicking();
+            bool isBusy() { return this->_busy; };
+            void setCoord(int x, int y) { this->_x = x; this->_y = y; };
+            void setId(int id) { this->_id = id; };
+           
+            void checkBomb();
             void reduceTime();
             void addPower();
-            bool pose(std::vector<std::shared_ptr<ECS::Object>> map, int x, int y);
+            void pose(int, int);
 
-            void lauchBomb();
-            void waitBomb();
+            void graphicPose();
+            void graphicExplode();
 
         protected:
+            int _id;
             int _time;  // Temps avant l'explosion
-            int _range; //taille de l'explosion
-            Chrono _chrono;
+            int _range; // Taille de l'explosion
+            int _actualTime;
+            Chrono *_chrono;
             bool _busy;
-         //   boost::thread_group _thread;
+            int _x;
+            int _y;
+            // boost::thread_group _thread;
+            IrrlichtDevice *_device;
+            IAnimatedMeshSceneNode *_meshNode;
+            ITriangleSelector *_triangleSelector;
+            ISceneManager *_sceneManager;
+
         private:
     };
 }
-

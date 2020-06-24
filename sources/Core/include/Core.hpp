@@ -16,6 +16,7 @@
 #include "StaticEntity.hpp"
 #include "MovableEntity.hpp"
 #include "Object.hpp"
+#include "MapGenerator.hpp"
 
 namespace Indie {
     class Core {
@@ -26,6 +27,7 @@ namespace Indie {
             void run();
             void printMapInfo();
             void setMap(std::vector<std::pair<std::shared_ptr<ECS::StaticEntity>,int>> tmp) {this->_map = tmp; };
+            MapGenerator mapGenerator;
         protected:
             int _maxX; // Taille max de la map en largeur
             int _maxY; // Taille max de la map en longueur
@@ -34,5 +36,7 @@ namespace Indie {
             std::vector<std::shared_ptr<ECS::MovableEntity>> _players;
             std::vector<std::pair<std::shared_ptr<ECS::StaticEntity>,int>> _map;
         private:
+
+            void generateMap();
     };
 }

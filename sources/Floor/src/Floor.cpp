@@ -9,7 +9,7 @@
 
 ECS::Floor::Floor(int x, int y, int id)
 {
-    this->setPoxX(x);
+    this->setPosX(x);
     this->setPosY(y);
     this->setId(id);
     this->setType(ECS::ObjectType::FloorType);

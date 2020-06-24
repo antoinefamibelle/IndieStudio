@@ -14,7 +14,7 @@ MapGenerator::~MapGenerator() {}
 int MapGenerator::genMap(int nbPlayers, int mapSize)
 {
     if (nbPlayers < 1 || nbPlayers > 4 || mapSize < 12)
-        return 84;
+        throw "Generation of map Failed";
     srand(time(NULL));
     initMap(mapSize);
     handleWalls(mapSize);
@@ -52,7 +52,7 @@ void MapGenerator::handleWalls(int mapSize)
     int tmp = 0;
 
     for (int i = 1; i <= mapSize; ++i) {
-        for (int idx = 0; idx < 6; ++idx) {
+        for (int idx = 0; idx < 10; ++idx) {
             tmp = (i == 1 || i == mapSize) ? RAND_PLAYER_LINE : RAND_BASIC_LINE;
             while (std::find(indexes.begin(), indexes.end(), tmp) != indexes.end())
                 tmp = (i == 1 || i == mapSize) ? RAND_PLAYER_LINE : RAND_BASIC_LINE;
@@ -90,19 +90,13 @@ int MapGenerator::writeInFile()
     std::shared_ptr<FILE> filePtr(file, closeFile);
 
     if (filePtr == nullptr)
-        return 84;
+        throw "Generation of map Failed";
     for (size_t i = 0; i < _map.size(); ++i)
         fprintf(file, "%s\n", _map[i].c_str());
     return 0;
 }
 
-int main(int ac, char **av)
+std::vector<std::string> MapGenerator::getMap() const
 {
-    MapGenerator mapGenerator;
-
-    if (ac != 3)
-        return 84;
-    if (mapGenerator.genMap(atoi(av[1]), atoi(av[2])) == 84)
-        return 84;
-    return 0;
+    return this->_map;
 }

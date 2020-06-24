@@ -25,6 +25,7 @@ class MapGenerator {
         void handleWalls(int);
         void placePlayers(int, int);
         int writeInFile();
+        std::vector<std::string> getMap() const;
 
     private:
         std::vector<std::string> _map;

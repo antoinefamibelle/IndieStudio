@@ -5,44 +5,35 @@
 ** main
 */
 
-#include "JsonParser.hpp"
-#include "Object.hpp"
+#include "irrlicht.h"
+#include "MyIrrlicht.hpp"
+#include <irrlicht.h>
+#include "driverChoice.h"
+#include "Game.hpp"
+#include "ManageMenu.hpp"
+#include "memory"
 
-// #include "iostream"
-// // #include "Wall.hpp"
-// // #include "Floor.hpp"
-// // #include "Core.hpp"
-// // #include "Character.hpp"
-// // #include "Map.hpp"
+#include "AI.hpp"
 
-// int main()
-// {
-//     Indie::Core *core = new Indie::Core(4);
-//     Indie::Map *map = new Indie::Map();
-
-//     try {
-//         core->setMap(map->GenerateMap());
-//         core->printMapInfo();
-//     } catch(char *message) {
-//         std::cout << message << std::endl;
-//     }
-//     return 0;
-// }
-
-int main()
+int main(void)
 {
-    // std::vector<ECS::Object *> object;
-    // JsonParser *_parser = new JsonParser();
+    Indie::Game game = Indie::Game();
+    ManageMenu *Menu = new ManageMenu();
+    int choice = 0;
 
-    // _parser->serializer->serialize(object);
-    //  object = _parser->deserializer->deserialize("./conf/data.conf");
-
-    // Indie::Core *core = new Indie::Core(4);
-
-    // try {
-    //     core->run();
-    // } catch(char *message) {
-    //     std::cout << message << std::endl;
-    // }
+    try {
+        choice = Menu->head();
+        if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5) {
+            Menu->getSound()->menuMusicStop();
+            game.play(choice == 5 ? 1 : choice, choice == 5 ? true : false);
+        }
+        else if (choice == -1)
+            return 0;
+        else {
+            throw "Undefined number of player";
+        }
+    } catch(std::string message) {
+        std::cout << "[ERROR] : " << message << std::endl;
+    }
     return 0;
 }

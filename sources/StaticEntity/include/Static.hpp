@@ -26,7 +26,7 @@ namespace ECS {
             using ECS::Object::setEmpty;
             using ECS::Object::setId;
             using ECS::Object::setPosY;
-            using ECS::Object::setPoxX;
+            using ECS::Object::setPosX;
             using ECS::Object::setType;
         private:
     };

@@ -7,37 +7,25 @@
 
 #pragma once
 
-#include "iostream"
-#include "memory"
-#include "vector"
-#include "string"
+#include "AObject.hpp"
 
 namespace ECS {
-    enum ObjectType {
-        CharacterType,
-        BombType,
-        WallType,
-        UnbreakableWallType,
-        FloorType,
-        UndefinedType
-    };
-
-    class Object {
+    class Object : public AObject{
         public:
             Object(){};
             ~Object(){};
 
-            bool isEmpty() {return this->_isEmpty; };
-            int getId() {return this->_id;};
-            int getPosX() {return this->_x; };
-            int getPosY() {return this->_y; };
-            ECS::ObjectType getType() {return this->_objectType; };
+            bool isEmpty() { return this->_isEmpty; };
+            int getId() { return this->_id;};
+            int getPosX() { return this->_x; };
+            int getPosY() { return this->_y; };
+            ECS::ObjectType getType() { return this->_objectType; };
 
-            void setEmpty(bool empty) {this->_isEmpty = empty; };  
-            void setId(int id) {this->_id = id; };
-            void setPoxX(int x) {this->_x = x; };
-            void setPosY(int y) {this->_y = y; };
-            void setType(ECS::ObjectType type) {this->_objectType = type; };
+            void setEmpty(bool empty) { this->_isEmpty = empty; };  
+            void setId(int id) { this->_id = id; };
+            void setPosX(int x) { this->_x = x; };
+            void setPosY(int y) { this->_y = y; };
+            void setType(ECS::ObjectType type) { this->_objectType = type; };
         protected:
             ECS::ObjectType _objectType;
             int _id;
